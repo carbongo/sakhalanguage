@@ -1,0 +1,27 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-keyboard": {
+      "PACKAGE_NAME": "io.georgean.sakhalanguage"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "io.georgean.sakhalanguage"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "io.georgean.sakhalanguage"
+    },
+    "cordova-plugin-wkwebview-engine": {
+      "PACKAGE_NAME": "io.georgean.sakhalanguage"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.georgean.sakhalanguage"
+    }
+  },
+  "dependent_plugins": {}
+}
