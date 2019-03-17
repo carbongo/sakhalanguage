@@ -2,7 +2,7 @@
   "name": "sakha-language",
   "private": true,
   "version": "1.0.0",
-  "description": "Sakha Language",
+  "description": "Саха тыла",
   "repository": "",
   "license": "UNLICENSED",
   "framework7": {
@@ -10,18 +10,18 @@
     "type": [
       "cordova"
     ],
-    "name": "Саха тыла",
+    "name": "Sakha Language",
     "pkg": "io.georgean.sakhalanguage",
     "platform": [
-      "ios",
-      "android"
+      "android",
+      "ios"
     ],
     "framework": "core",
     "template": "single-view",
     "bundler": "webpack",
     "cssPreProcessor": false,
     "customColor": true,
-    "color": "54acff"
+    "color": "2e79ff"
   },
   "scripts": {
     "build-prod": "cross-env NODE_ENV=production node ./build/build.js",

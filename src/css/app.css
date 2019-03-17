@@ -5,10 +5,10 @@
 
 /* Custom color theme properties */
 :root {
-  --f7-theme-color: #54acff;
+  --f7-theme-color: #2e79ff;
   --f7-theme-color-rgb: 84, 172, 255;
-  --f7-theme-color-shade: #2b98ff;
-  --f7-theme-color-tint: #7dc0ff;
+  --f7-theme-color-shade: #245fc8;
+  --f7-theme-color-tint: #68aaff;
 }
 
 /* Your app custom styles here */

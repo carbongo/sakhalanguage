@@ -1,4 +1,4 @@
-#Sun Mar 10 15:26:08 YAKT 2019
+#Wed Mar 13 11:16:47 YAKT 2019
 base.0=/Users/carbongo-air/Documents/GitHub/sakhalanguage/cordova/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex
