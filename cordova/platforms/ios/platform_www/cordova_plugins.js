@@ -47,8 +47,8 @@ module.exports.metadata =
   "cordova-plugin-keyboard": "1.2.0",
   "cordova-plugin-splashscreen": "5.0.2",
   "cordova-plugin-statusbar": "2.4.2",
-  "cordova-plugin-wkwebview-engine": "1.1.4",
-  "cordova-plugin-whitelist": "1.3.3"
+  "cordova-plugin-whitelist": "1.3.3",
+  "cordova-plugin-wkwebview-engine": "1.1.4"
 };
 // BOTTOM OF METADATA
 });

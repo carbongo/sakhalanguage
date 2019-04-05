@@ -16,10 +16,10 @@
     "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "io.georgean.sakhalanguage"
     },
-    "cordova-plugin-wkwebview-engine": {
+    "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "io.georgean.sakhalanguage"
     },
-    "cordova-plugin-whitelist": {
+    "cordova-plugin-wkwebview-engine": {
       "PACKAGE_NAME": "io.georgean.sakhalanguage"
     }
   },

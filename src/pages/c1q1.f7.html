@@ -59,7 +59,7 @@
         </ul>
       </div>
       <div class="block block-strong">
-        <a href="#" class="button button-small button-round button-fill">
+        <a href="#" @click="confirm" id="ui_confirm" class="button button-small button-round button-fill">
           Подтвердить
         </a>
       </div>
@@ -67,5 +67,40 @@
   </div>
 </template>
 <script>
-  export default {};
+  export default {
+    // Lifecycle Hooks
+    beforeCreate() {},
+    created() {},
+    beforeMount() {},
+    mounted() {},
+    beforeDestroy() {},
+    destroyed() {},
+    // Component Data
+    data: function () {
+      // Must return an object
+      return {
+        name: 'Jimmy',
+        age: 25,
+        like: ['Tennis', 'Chess', 'Football'],
+      }
+    },
+    // Component Methods
+    methods: {
+      confirm: function () {
+        ui_confirm.innerHTML = 'Чэ';
+      },
+    },
+    // Page Events
+    on: {
+      pageMounted: function (e, page) {},
+      pageInit: function (e, page) {
+        const ui_confirm = document.getElementById('ui_confirm');
+      },
+      pageBeforeIn: function (e, page) {},
+      pageAfterIn: function (e, page) {},
+      pageBeforeOut: function (e, page) {},
+      pageAfterOut: function (e, page) {},
+      pageBeforeRemove: function (e, page) {},
+    }
+  };
 </script>
