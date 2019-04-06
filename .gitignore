@@ -139,10 +139,7 @@ fabric.properties
 # Recommended template: Node.gitignore
 
 # App platform binaries and built files
-/platforms
-
-# Optional to ignore plugin Git clones
-#/plugins
+/cordova/platforms
 
 ### macOS ###
 # General
