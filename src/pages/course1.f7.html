@@ -1,0 +1,144 @@
+<template>
+  <div class="page">
+    <div class="navbar">
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="icon icon-back"></i>
+            <span class="ios-only">Назад</span>
+          </a>
+        </div>
+        <div class="title"><span hidden>Course 1. </span>Основы</div>
+      </div>
+    </div>
+    <!-- һҺ өӨ ҕҔ үҮ ҥҤ -->
+    <div class="page-content">
+      <div class="block block-strong">
+        <p>Выполнено заданий (<span id="course_completed">0</span>/<span id="course_overall">10</span>):</p>
+        <div>
+          <p><span data-progress="0" class="progressbar" id="course_progress"></span></p>
+        </div>
+        <h4 id="task_type">Переведите слово</h4>
+        <h3 id="task">Дерево</h3>
+      </div>
+      <div class="block-title" id="task_hint">Выберите одно</div>
+      <div class="list" id="task_answers">
+        <ul>
+          <li>
+            <label class="item-radio item-content">
+              <input type="radio" name="radio" value="0" />
+              <i class="icon icon-radio"></i>
+              <div class="item-media"><img style="content:var(--img-door);" width="44" /></div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Аан</div>
+                </div>
+              </div>
+            </label>
+          </li>
+          <li>
+            <label class="item-radio item-content">
+              <input type="radio" name="radio" value="1" />
+              <i class="icon icon-radio"></i>
+              <div class="item-media"><img style="content:var(--img-tree);" width="44" /></div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Мас</div>
+                </div>
+              </div>
+            </label>
+          </li>
+          <li>
+            <label class="item-radio item-content">
+              <input type="radio" name="radio" value="0" />
+              <i class="icon icon-radio"></i>
+              <div class="item-media"><img style="content:var(--img-man);" width="44" /></div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Киһи</div>
+                </div>
+              </div>
+            </label>
+          </li>
+          <li>
+            <label class="item-radio item-content">
+              <input type="radio" name="radio" value="0" />
+              <i class="icon icon-radio"></i>
+              <div class="item-media"><img style="content:var(--img-shirt);" width="44" /></div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Таҥас</div>
+                </div>
+              </div>
+            </label>
+          </li>
+        </ul>
+      </div>
+      <div class="block block-strong">
+        <a href="#" @click="answerConfirm" id="task_confirm"
+          class="col button button-large button-round button-fill button-raised">
+          Подтвердить
+        </a>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  export default {
+    // Lifecycle Hooks
+    beforeCreate() {},
+    created() {},
+    beforeMount() {},
+    mounted() {},
+    beforeDestroy() {},
+    destroyed() {},
+    // Component Data
+    data: function () {
+      // Must return an object
+      // It's better to use: https://jsoneditoronline.org
+      return {
+        "task1": {
+          "1": {
+            "task": "Дерево",
+            "type": "word",
+            "answers": {
+              "door": "Аан",
+              "tree": "Мас",
+              "man": "Киһи",
+              "shirt": "Таҥас"
+            },
+            "right": 1
+          },
+          "2": {
+            "task": "Человек",
+            "type": "word",
+            "answers": {
+              "door": "Аан",
+              "tree": "Мас",
+              "man": "Киһи",
+              "shirt": "Таҥас"
+            },
+            "right": 2
+          }
+        }
+      }
+    },
+    // Component Methods
+    methods: {
+      answerConfirm: function () {
+        var checkedAnswer = document.querySelector('input[name="radio"]:checked').value;
+        this.$root.answerConfirm(checkedAnswer);
+      }
+    },
+    // Page Events
+    on: {
+      pageMounted: function (e, page) {},
+      pageInit: function (e, page) {},
+      pageBeforeIn: function (e, page) {},
+      pageAfterIn: function (e, page) {},
+      pageBeforeOut: function (e, page) {},
+      pageAfterOut: function (e, page) {},
+      pageBeforeRemove: function (e, page) {},
+    }
+  };
+</script>
