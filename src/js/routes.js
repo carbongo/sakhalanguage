@@ -1,16 +1,14 @@
-
 import HomePage from '../pages/home.f7.html';
-import Course1 from '../pages/course1.f7.html';
+import Words1 from '../pages/words1.f7.html';
 import AboutPage from '../pages/about.f7.html';
 import FormPage from '../pages/form.f7.html';
-
+import Debug from '../pages/debug.f7.html';
 
 import DynamicRoutePage from '../pages/dynamic-route.f7.html';
 import RequestAndLoad from '../pages/request-and-load.f7.html';
 import NotFoundPage from '../pages/404.f7.html';
 
-var routes = [
-  {
+var routes = [{
     path: '/',
     component: HomePage,
   },
@@ -19,15 +17,17 @@ var routes = [
     component: AboutPage,
   },
   {
-    path: '/course1/',
-    component: Course1,
+    path: '/words1/',
+    component: Words1,
   },
   {
     path: '/form/',
     component: FormPage,
   },
-
-
+  {
+    path: '/debug/',
+    component: Debug,
+  },
   {
     path: '/dynamic-route/blog/:blogId/post/:postId/',
     component: DynamicRoutePage,
@@ -54,8 +54,7 @@ var routes = [
           firstName: 'Vladimir',
           lastName: 'Kharlampidi',
           about: 'Hello, i am creator of Framework7! Hope you like it!',
-          links: [
-            {
+          links: [{
               title: 'Framework7 Website',
               url: 'http://framework7.io',
             },
@@ -69,16 +68,13 @@ var routes = [
         app.preloader.hide();
 
         // Resolve route to load page
-        resolve(
-          {
-            component: RequestAndLoad,
-          },
-          {
-            context: {
-              user: user,
-            }
+        resolve({
+          component: RequestAndLoad,
+        }, {
+          context: {
+            user: user,
           }
-        );
+        });
       }, 1000);
     },
   },

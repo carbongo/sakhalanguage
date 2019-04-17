@@ -1,0 +1,77 @@
+{
+  "task1": [{
+    "task": "Дерево",
+    "type": "word",
+    "answers": [{
+        "word": "Аан",
+        "img": "door",
+        "right": 0
+      },
+      {
+        "word": "Мас",
+        "img": "tree",
+        "right": 1
+      },
+      {
+        "word": "Киһи",
+        "img": "man",
+        "right": 0
+      },
+      {
+        "word": "Таҥас",
+        "img": "shirt",
+        "right": 0
+      }
+    ]
+  }],
+  "task2": [{
+    "task": "Человек",
+    "type": "word",
+    "answers": [{
+        "word": "Аан",
+        "img": "door",
+        "right": 0
+      },
+      {
+        "word": "Мас",
+        "img": "tree",
+        "right": 0
+      },
+      {
+        "word": "Киһи",
+        "img": "man",
+        "right": 1
+      },
+      {
+        "word": "Таҥас",
+        "img": "shirt",
+        "right": 0
+      }
+    ]
+  }],
+  "task3": [{
+    "task": "Человек2",
+    "type": "word",
+    "answers": [{
+        "word": "Аан",
+        "img": "door",
+        "right": 0
+      },
+      {
+        "word": "Мас",
+        "img": "tree",
+        "right": 0
+      },
+      {
+        "word": "Киһи",
+        "img": "man",
+        "right": 1
+      },
+      {
+        "word": "Таҥас",
+        "img": "shirt",
+        "right": 0
+      }
+    ]
+  }]
+}

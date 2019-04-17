@@ -1,5 +1,6 @@
 import $$ from 'dom7';
 import Framework7 from 'framework7/framework7.esm.bundle.js';
+import localForage from 'localforage/dist/localforage.js';
 
 // Import F7 Styles
 import 'framework7/css/framework7.bundle.css';
@@ -32,16 +33,24 @@ var app = new Framework7({
   },
   // App root methods
   methods: {
-    helloWorld: function () {
-      app.dialog.alert('Hello World!');
-    },
-    courseProgress: function (data, completedTasks, course_completed, course_overall, course_progress) {
-
+    // helloWorld: function () {
+    //   app.dialog.alert('Hello World!');
+    // },
+    courseMounted: function (data, self) {
+      let courseName = self.$f7route.path.slice(1,-1);
+      localForage.getItem(courseName, function(err, value) {
+        if (value) {
+          self.$setState(data["task" + value]);
+        } else {
+          localForage.setItem(courseName, 1);
+        }
+      })
     },
     showTask: function (data, task, task_type, task_hint, task_answers) {
-      
+      console.log(data);
     },
-    answerIsRight: function () {
+    answerIsRight: function (data, self) {
+      let courseName = self.$f7route.path.slice(1,-1);
       var toast = app.toast.create({
         icon: app.theme === 'ios' ? '<i class="f7-icons">star</i>' : '<i class="material-icons">star</i>',
         text: 'Отлично!',
@@ -49,19 +58,33 @@ var app = new Framework7({
         closeTimeout: 2000,
       });
       toast.open();
+      let _value;
+      localForage.getItem(courseName, function(err, value) {
+        _value = value + 1;
+        localForage.setItem(courseName, _value);
+        console.log(value);
+        console.log(_value);
+        self.$setState(data["task" + _value]);
+      })
     },
     answerIsWrong: function () {
       var toast = app.toast.create({
-        icon: app.theme === 'ios' ? '<i class="f7-icons">close_round</i>' :
-          '<i class="material-icons">close_round</i>',
+        icon: app.theme === 'ios' ? '<i class="f7-icons">close_round</i>' : '<i class="material-icons">close_round</i>',
         text: 'Неверный ответ',
         position: 'center',
         closeTimeout: 2000,
       });
       toast.open();
     },
-    answerConfirm: function (checkedAnswer) {
-      checkedAnswer === '1' ? this.methods.answerIsRight() : this.methods.answerIsWrong();
+    answerConfirm: function (checkedAnswer, data, self) {
+      let answer = 0;
+      if (checkedAnswer === '1') {
+        this.methods.answerIsRight(data, self);
+        answer = 1;
+      } else {
+        this.methods.answerIsWrong()
+        answer = 0;
+      }
     },
   },
   // App routes
