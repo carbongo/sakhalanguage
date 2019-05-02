@@ -46,17 +46,17 @@ var app = new Framework7({
       app.progressbar.set(course_progress, value, 150);
     },
 
-    taskSet: function (self, data, value) {
+    taskSet: function (currPage, data, value) {
       console.log("taskSet: Task " + value + " is set")
-      self.$setState(data["task" + value]);
+      currPage.$setState(data["task" + value]);
     },
 
-    courseMounted: function (data, self) {
-      let courseName = self.$f7route.path.slice(1, -1);
+    courseMounted: function (data, currPage) {
+      let courseName = currPage.$f7route.path.slice(1, -1);
       localForage.getItem(courseName, function (err, value) {
         let taskCount = Object.keys(data).length;
         if (value) {
-          app.methods.taskSet(self, data, value);
+          app.methods.taskSet(currPage, data, value);
           app.methods.progressbarSet(((value - 1) / taskCount) * 100);
         } else {
           app.methods.storageSet(courseName, 1);
@@ -65,7 +65,7 @@ var app = new Framework7({
       })
     },
 
-    answerIsRight: function (data, self) {
+    answerIsRight: function (data, currPage) {
       var toast = app.toast.create({
         icon: app.theme === 'ios' ? '<i class="f7-icons">star</i>' : '<i class="material-icons">star</i>',
         text: 'Отлично!',
@@ -74,7 +74,7 @@ var app = new Framework7({
       });
       toast.open();
 
-      let courseName = self.$f7route.path.slice(1, -1);
+      let courseName = currPage.$f7route.path.slice(1, -1);
       let _value;
       localForage.getItem(courseName, function (err, value) {
         let taskCount = Object.keys(data).length;
@@ -82,7 +82,7 @@ var app = new Framework7({
         if (value < taskCount) {
           app.methods.progressbarSet(value / taskCount * 100);
           app.methods.storageSet(courseName, _value);
-          app.methods.taskSet(self, data, _value);
+          app.methods.taskSet(currPage, data, _value);
         } else {
           console.log("All is done");
         }
@@ -99,10 +99,10 @@ var app = new Framework7({
       toast.open();
     },
 
-    answerConfirm: function (checkedAnswer, data, self) {
+    answerConfirm: function (checkedAnswer, data, currPage) {
       let answer = 0;
       if (checkedAnswer === '1') {
-        app.methods.answerIsRight(data, self);
+        app.methods.answerIsRight(data, currPage);
         answer = 1;
       } else {
         app.methods.answerIsWrong();
