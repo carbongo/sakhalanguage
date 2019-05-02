@@ -36,56 +36,80 @@ var app = new Framework7({
     // helloWorld: function () {
     //   app.dialog.alert('Hello World!');
     // },
+    storageSet: function (target, value) {
+      console.log("storageSet: Storage (" + target + ") is set to " + value)
+      localForage.setItem(target, value);
+    },
+
+    progressbarSet: function (value) {
+      console.log("progressbarSet: Progressbar " + value + " is set")
+      app.progressbar.set(course_progress, value, 150);
+    },
+
+    taskSet: function (self, data, value) {
+      console.log("taskSet: Task " + value + " is set")
+      self.$setState(data["task" + value]);
+    },
+
     courseMounted: function (data, self) {
-      let courseName = self.$f7route.path.slice(1,-1);
-      localForage.getItem(courseName, function(err, value) {
+      let courseName = self.$f7route.path.slice(1, -1);
+      localForage.getItem(courseName, function (err, value) {
+        let taskCount = Object.keys(data).length;
         if (value) {
-          self.$setState(data["task" + value]);
+          app.methods.taskSet(self, data, value);
+          app.methods.progressbarSet(((value - 1) / taskCount) * 100);
         } else {
-          localForage.setItem(courseName, 1);
+          app.methods.storageSet(courseName, 1);
+          app.methods.progressbarSet(0);
         }
       })
     },
-    showTask: function (data, task, task_type, task_hint, task_answers) {
-      console.log(data);
-    },
+
     answerIsRight: function (data, self) {
-      let courseName = self.$f7route.path.slice(1,-1);
       var toast = app.toast.create({
         icon: app.theme === 'ios' ? '<i class="f7-icons">star</i>' : '<i class="material-icons">star</i>',
         text: 'Отлично!',
         position: 'center',
-        closeTimeout: 2000,
+        closeTimeout: 1000,
       });
       toast.open();
+
+      let courseName = self.$f7route.path.slice(1, -1);
       let _value;
-      localForage.getItem(courseName, function(err, value) {
+      localForage.getItem(courseName, function (err, value) {
+        let taskCount = Object.keys(data).length;
         _value = value + 1;
-        localForage.setItem(courseName, _value);
-        console.log(value);
-        console.log(_value);
-        self.$setState(data["task" + _value]);
+        if (value < taskCount) {
+          app.methods.progressbarSet(value / taskCount * 100);
+          app.methods.storageSet(courseName, _value);
+          app.methods.taskSet(self, data, _value);
+        } else {
+          console.log("All is done");
+        }
       })
     },
+
     answerIsWrong: function () {
       var toast = app.toast.create({
         icon: app.theme === 'ios' ? '<i class="f7-icons">close_round</i>' : '<i class="material-icons">close_round</i>',
         text: 'Неверный ответ',
         position: 'center',
-        closeTimeout: 2000,
+        closeTimeout: 1000,
       });
       toast.open();
     },
+
     answerConfirm: function (checkedAnswer, data, self) {
       let answer = 0;
       if (checkedAnswer === '1') {
-        this.methods.answerIsRight(data, self);
+        app.methods.answerIsRight(data, self);
         answer = 1;
       } else {
-        this.methods.answerIsWrong()
+        app.methods.answerIsWrong();
         answer = 0;
       }
     },
+
   },
   // App routes
   routes: routes,

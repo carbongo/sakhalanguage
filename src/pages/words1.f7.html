@@ -11,10 +11,8 @@
         <div class="title"><span hidden>Course 1. </span>Слова</div>
       </div>
     </div>
-    <!-- һҺ өӨ ҕҔ үҮ ҥҤ -->
     <div class="page-content">
       <div class="block block-strong">
-        <p>Выполнено заданий (<span id="course_completed">0</span>/<span id="course_overall">10</span>):</p>
         <div>
           <p><span data-progress="0" class="progressbar" id="course_progress"></span></p>
         </div>
@@ -66,6 +64,7 @@
     data: function () {
       // Must return an object (these were imported as JSON earlier)
       // It's better to use: https://jsoneditoronline.org
+      // һҺ өӨ ҕҔ үҮ ҥҤ
       return data["task1"];
     },
     // Component Methods
@@ -79,12 +78,13 @@
     // Page Events
     on: {
       pageMounted: function (e, page) {
+
+      },
+      pageInit: function (e, page) {},
+      pageBeforeIn: function (e, page) {
         let _data = data;
         this.$root.courseMounted(_data, this);
       },
-      pageInit: function (e, page) {
-      },
-      pageBeforeIn: function (e, page) {},
       pageAfterIn: function (e, page) {},
       pageBeforeOut: function (e, page) {},
       pageAfterOut: function (e, page) {},
