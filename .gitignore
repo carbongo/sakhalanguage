@@ -140,6 +140,7 @@ fabric.properties
 
 # App platform binaries and built files
 cordova/platforms
+cordova/plugins
 src/www
 www
 
