@@ -141,6 +141,7 @@ fabric.properties
 # App platform binaries and built files
 cordova/platforms
 cordova/plugins
+cordova/www
 src/www
 www
 
@@ -317,5 +318,3 @@ DerivedData/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
-
-# End of https://www.gitignore.io/api/node,xcode,macos,windows,cordova,androidstudio,visualstudiocode
