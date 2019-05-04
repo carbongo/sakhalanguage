@@ -47,8 +47,13 @@ var app = new Framework7({
     },
 
     taskSet: function (currPage, data, value) {
-      console.log("taskSet: Task " + value + " is set")
+      console.log("taskSet: Task " + value + " is set");
       currPage.$setState(data["task" + value]);
+    },
+
+    viewSet: function (view) {
+      console.log("viewSet: View " + view + " is set");
+      app.views.main.router.navigate('/' + view + '/', {reloadCurrent: true});
     },
 
     courseMounted: function (data, currPage) {
@@ -85,6 +90,7 @@ var app = new Framework7({
           app.methods.taskSet(currPage, data, _value);
         } else {
           console.log("All is done");
+          app.methods.viewSet("finished");
         }
       })
     },

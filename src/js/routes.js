@@ -1,5 +1,6 @@
 import HomePage from '../pages/home.f7.html';
 import Words1 from '../pages/words1.f7.html';
+import Finished from '../pages/finished.f7.html';
 import AboutPage from '../pages/about.f7.html';
 import FormPage from '../pages/form.f7.html';
 import Debug from '../pages/debug.f7.html';
@@ -19,6 +20,10 @@ var routes = [{
   {
     path: '/words1/',
     component: Words1,
+  },
+  {
+    path: '/finished/',
+    component: Finished,
   },
   {
     path: '/form/',
