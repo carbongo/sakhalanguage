@@ -50,22 +50,22 @@
     ]
   }],
   "task3": [{
-    "task": "Человек2",
+    "task": "Девочка",
     "type": "word",
     "answers": [{
-        "word": "Аан",
-        "img": "door",
+        "word": "Кыыс",
+        "img": "woman",
+        "right": 1
+      },
+      {
+        "word": "Уол",
+        "img": "man",
         "right": 0
       },
       {
         "word": "Мас",
         "img": "tree",
         "right": 0
-      },
-      {
-        "word": "Киһи",
-        "img": "man",
-        "right": 1
       },
       {
         "word": "Таҥас",

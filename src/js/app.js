@@ -33,9 +33,9 @@ var app = new Framework7({
   },
   // App root methods
   methods: {
-    // helloWorld: function () {
-    //   app.dialog.alert('Hello World!');
-    // },
+    helloWorld: function () {
+      app.dialog.alert('Hello World!');
+    },
     storageSet: function (target, value) {
       console.log("storageSet: Storage (" + target + ") is set to " + value)
       localForage.setItem(target, value);
@@ -57,7 +57,7 @@ var app = new Framework7({
     },
 
     courseMounted: function (data, currPage) {
-      let courseName = currPage.$f7route.path.slice(1, -1);
+      let courseName = currPage.$f7route.path.slice(9);
       localForage.getItem(courseName, function (err, value) {
         let taskCount = Object.keys(data).length;
         if (value) {
@@ -79,7 +79,7 @@ var app = new Framework7({
       });
       toast.open();
 
-      let courseName = currPage.$f7route.path.slice(1, -1);
+      let courseName = currPage.$f7route.path.slice(9);
       let _value;
       localForage.getItem(courseName, function (err, value) {
         let taskCount = Object.keys(data).length;

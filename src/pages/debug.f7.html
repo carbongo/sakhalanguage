@@ -14,12 +14,12 @@
         <div class="page-content">
             <div class="block-title">Прогресс курсов</div>
             <div class="block block-strong">
-                <h3>Слова (words1)</h3>
-                <p id="words1"></p>
-                <div @click='this.eraseProgress("words1")' class="col button button-round button-raised">Обнулить</div>
-                <h3>Слова 2 (words2)</h3>
-                <p id="words2"></p>
-                <div class="col button button-round button-raised">Обнулить</div>
+                <h3>Слова (words/1)</h3>
+                <p id="words/1"></p>
+                <div @click='this.eraseProgress("words/1")' class="col button button-round button-raised">Обнулить</div>
+                <h3>Слова 2 (words/2)</h3>
+                <p id="words/2"></p>
+                <div @click='this.eraseProgress("words/2")' class="col button button-round button-raised">Обнулить</div>
             </div>
         </div>
     </div>
@@ -38,10 +38,10 @@
         },
         on: {
             pageInit: function () {
-                localForage.getItem("words1", function (err, value) {
+                localForage.getItem("words/1", function (err, value) {
                     words1.innerHTML = value;
                 });
-                localForage.getItem("words2", function (err, value) {
+                localForage.getItem("words/2", function (err, value) {
                     words2.innerHTML = value;
                 });
             },

@@ -50,7 +50,9 @@
   </div>
 </template>
 <script>
-  import data from '../data/words1.json';
+  // import data from '../data/words1.json';
+  var dataname = "words1";
+  var data = require('../data/' + dataname + '.json');
 
   export default {
     // Lifecycle Hooks
