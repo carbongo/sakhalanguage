@@ -53,7 +53,9 @@ var app = new Framework7({
 
     viewSet: function (view) {
       console.log("viewSet: View " + view + " is set");
-      app.views.main.router.navigate('/' + view + '/', {reloadCurrent: true});
+      app.views.main.router.navigate('/' + view + '/', {
+        reloadCurrent: true
+      });
     },
 
     courseMounted: function (data, currPage) {
@@ -130,6 +132,8 @@ var app = new Framework7({
     overlay: Framework7.device.cordova && Framework7.device.ios || 'auto',
     iosOverlaysWebView: true,
     androidOverlaysWebView: false,
+    androidTextColor: 'white',
+    androidBackgroundColor: 'black',
   },
   on: {
     init: function () {
