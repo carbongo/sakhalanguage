@@ -2,16 +2,24 @@
   <div class="page">
     <div class="navbar">
       <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="/" class="link">
+            <i class="icon icon-back"></i>
+            <span class="ios-only">Назад</span>
+          </a>
+        </div>
         <div class="title"><span hidden>Course 1. </span>Слова</div>
       </div>
     </div>
     <div class="page-content">
-      <div class="block block-strong">
+      <div class="block block-strong text-align-center">
         <h2>
           Поздравляем! Вы завершили занятие.
         </h2>
-        <p>Ваша точность выполнения:</p>
-        <h2 id="result"></h2>
+        <div class="gauge result"></div>
+        <a @click="restartCourse" class="col button button-round">
+          Пройти заново
+        </a>
       </div>
       <div class="block block-strong">
         <a href="/" class="col button button-large button-round button-fill button-raised">
@@ -33,21 +41,44 @@
     // Component Data
     data: function () {},
     // Component Methods
-    methods: {},
+    methods: {
+      restartCourse: function () {
+        let context = this;
+        let lessonType = this.$route.params.lessonType;
+        let lessonId = this.$route.params.lessonId;
+
+        this.$root.setStorage(lessonType + "/" + lessonId, 1);
+        this.$root.setStorage(lessonType + "/" + lessonId + "_wrong", 0);
+
+        setTimeout(function () {
+          context.$root.setView('lessons/' + lessonType + "/" + lessonId);
+        }, 250);
+      },
+    },
     // Page Events
     on: {
       pageMounted: function (e, page) {},
       pageInit: function (e, page) {},
       pageBeforeIn: function (e, page) {},
-      pageAfterIn: function (e, page) {
-        let taskCount = this.$root.getStorage(this.$route.params.lessonType + "/" + this.$route.params.lessonId) - 1;
-        let wrongAnswers = this.$root.getStorage(this.$route.params.lessonType + "/" + this.$route.params.lessonId +
+      pageAfterIn: async function (e, page) {
+        let taskCount = await this.$root.getStorage(this.$route.params.lessonType + "/" + this.$route.params
+          .lessonId) - 1;
+        let wrongAnswers = await this.$root.getStorage(this.$route.params.lessonType + "/" + this.$route.params
+          .lessonId +
           "_wrong");
         let accuracy = taskCount / (taskCount + wrongAnswers);
-        result.innerHTML = accuracy;
-        setTimeout(function () {
-          console.log(taskCount)
-        }, 500)
+        var demoGauge = this.$app.gauge.create({
+          el: '.result',
+          type: 'circle',
+          value: accuracy,
+          size: 250,
+          borderColor: '#2196f3',
+          borderWidth: 10,
+          valueText: accuracy.toFixed(2) * 100 + '%',
+          valueFontSize: 41,
+          valueTextColor: '#2196f3',
+          labelText: 'точность выполнения',
+        });
       },
       pageBeforeOut: function (e, page) {},
       pageAfterOut: function (e, page) {},

@@ -63,17 +63,20 @@ var app = new Framework7({
     },
 
     // Вернуть значение value от target из localStorage посредством localForage
-    getStorage: function (target) {
-      // TODO: Must return a value from localForage
-      return localForage.getItem(target).then(function (value) {
-        // Returns a value as a string in a console log
-        console.log("getStorage: Значение из " + target + " = " + value);
-        // TODO: Fix. Not returning a value
-        return value;
-      });
+    getStorage: async function (target) {
+      return await localForage.getItem(target);
+    },
+
+    // Показать значок загрузки
+    showPreloader: function (timeout = 500) {
+      app.preloader.show();
+      setTimeout(function () {
+        app.preloader.hide()
+      }, timeout);
     },
 
     courseMounted: function (data, currPage) {
+      app.methods.showPreloader();
       let courseName = currPage.$f7route.path.slice(9);
       localForage.getItem(courseName, function (err, value) {
         let taskCount = Object.keys(data).length;
@@ -109,14 +112,15 @@ var app = new Framework7({
       localForage.getItem(courseName, function (err, value) {
         let taskCount = Object.keys(data).length;
         _value = value + 1;
+        app.methods.setStorage(courseName, _value);
         if (value < taskCount) {
           app.methods.setProgressbar(value / taskCount * 100);
-          app.methods.setStorage(courseName, _value);
           app.methods.setTask(currPage, data, _value);
         } else {
           console.log("All is done");
-          app.methods.setStorage(courseName, _value);
-          app.methods.setView("finished/" + courseName);
+          setTimeout(function () {
+            app.methods.setView("finished/" + courseName);
+          }, 500);
         };
       });
     },

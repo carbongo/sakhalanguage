@@ -1,95 +1,97 @@
 <template>
-    <div class="page">
-      <div class="navbar">
-        <div class="navbar-inner sliding">
-          <div class="left">
-            <a href="#" class="link back">
-              <i class="icon icon-back"></i>
-              <span class="ios-only">Назад</span>
-            </a>
-          </div>
-          <div class="title">Слова</div>
-        </div>
-      </div>
-      <div class="page-content">
-        <div class="block block-strong">
-          <div>
-            <p><span data-progress="0" class="progressbar" id="course_progress"></span></p>
-          </div>
-          <h4 id="task_type">
-            Переведите слово
-          </h4>
-          <h3 id="task">{{this[0].task}}</h3>
-        </div>
-        <div class="block-title" id="task_hint">Выберите одно</div>
-        <div class="list" id="task_answers">
-          <ul>
-            {{#each this[0].answers}}
-            <li>
-              <label class="item-radio item-content">
-                <input type="radio" name="radio" value="{{this.right}}" />
-                <i class="icon icon-radio"></i>
-                <div class="item-media"><img style="content:var(--img-{{this.img}});" width="44" /></div>
-                <div class="item-inner">
-                  <div class="item-title-row">
-                    <div class="item-title">{{this.word}}</div>
-                  </div>
-                </div>
-              </label>
-            </li>
-            {{/each}}
-          </ul>
-        </div>
-        <div class="block block-strong">
-          <a href="#" @click="answerConfirm" id="task_confirm"
-            class="col button button-large button-round button-fill button-raised">
-            Подтвердить
+  <div class="page">
+    <div class="navbar">
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="/" class="link">
+            <i class="icon icon-back"></i>
+            <span class="ios-only">Назад</span>
           </a>
         </div>
+        <div class="title">Слова</div>
       </div>
     </div>
-  </template>
-  <script>
-    // import data from '../data/words1.json';
-    let data;
-  
-    export default {
-      // Lifecycle Hooks
-      beforeCreate() {},
-      created() {},
-      beforeMount() {},
-      mounted() {},
-      beforeDestroy() {},
-      destroyed() {},
-      // Component Data
-      data: function () {
-        // Must return an object (these were imported as JSON earlier)
-        // It's better to use: https://jsoneditoronline.org
-        // һҺ өӨ ҕҔ үҮ ҥҤ
-        let dataname = "words" + this.$route.params.lessonId;
-        data = require('../../data/' + dataname + '.json');
-        return data["task1"];
-      },
-      // Component Methods
-      methods: {
-        answerConfirm: function () {
-          let checkedAnswer = document.querySelector('input[name="radio"]:checked').value;
-          let _data = data;
-          this.$root.answerConfirm(checkedAnswer, _data, this);
+    <div class="page-content">
+      <div class="block block-strong">
+        <div>
+          <p><span data-progress="0" class="progressbar" id="course_progress"></span></p>
+        </div>
+        <h4>
+          Переведите слово
+        </h4>
+        <h3>{{this[0].task}}</h3>
+      </div>
+      <div class="block-title">Выберите одно</div>
+      <div class="list">
+        <ul id="task_answers">
+          {{#each this[0].answers}}
+          <li>
+            <label class="item-radio item-content">
+              <input type="radio" name="radio" value="{{this.right}}" />
+              <i class="icon icon-radio"></i>
+              <div class="item-media"><img style="content:var(--img-{{this.img}});" width="44" /></div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">{{this.word}}</div>
+                </div>
+              </div>
+            </label>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="block block-strong">
+        <a href="#" @click="answerConfirm" class="col button button-large button-round button-fill button-raised">
+          Подтвердить
+        </a>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  let data;
+
+  export default {
+    // Lifecycle Hooks
+    beforeCreate() {},
+    created() {},
+    beforeMount() {},
+    mounted() {},
+    beforeDestroy() {},
+    destroyed() {},
+    // Component Data
+    data: function () {
+      // Must return an object (these were imported as JSON earlier)
+      // It's better to use: https://jsoneditoronline.org
+      // һҺ өӨ ҕҔ үҮ ҥҤ
+      let dataname = "words" + this.$route.params.lessonId;
+      data = require('../../data/' + dataname + '.json');
+      return data["task1"];
+    },
+    // Component Methods
+    methods: {
+      answerConfirm: function () {
+        let checkedAnswer = document.querySelector('input[name="radio"]:checked').value;
+        let _data = data;
+        this.$root.answerConfirm(checkedAnswer, _data, this);
+      }
+    },
+    // Page Events
+    on: {
+      pageMounted: function (e, page) {},
+      pageInit: function (e, page) {
+        let _data = data;
+        this.$root.courseMounted(_data, this);
+        var ul = task_answers;
+        for (var i = ul.children.length; i >= 0; i--) {
+          ul.appendChild(ul.children[Math.random() * i | 0]);
+          console.log(ul);
         }
       },
-      // Page Events
-      on: {
-        pageMounted: function (e, page) {},
-        pageInit: function (e, page) {
-          let _data = data;
-          this.$root.courseMounted(_data, this);
-        },
-        pageBeforeIn: function (e, page) {},
-        pageAfterIn: function (e, page) {},
-        pageBeforeOut: function (e, page) {},
-        pageAfterOut: function (e, page) {},
-        pageBeforeRemove: function (e, page) {},
-      }
-    };
-  </script>
+      pageBeforeIn: function (e, page) {},
+      pageAfterIn: function (e, page) {},
+      pageBeforeOut: function (e, page) {},
+      pageBeforeRemove: function (e, page) {},
+    }
+  };
+</script>
