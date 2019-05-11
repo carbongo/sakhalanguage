@@ -8,7 +8,7 @@
               <span class="ios-only">Назад</span>
             </a>
           </div>
-          <div class="title"><span hidden>Course 1. </span>Слова</div>
+          <div class="title">Слова</div>
         </div>
       </div>
       <div class="page-content">
@@ -51,7 +51,7 @@
   </template>
   <script>
     // import data from '../data/words1.json';
-    var data;
+    let data;
   
     export default {
       // Lifecycle Hooks
@@ -66,7 +66,7 @@
         // Must return an object (these were imported as JSON earlier)
         // It's better to use: https://jsoneditoronline.org
         // һҺ өӨ ҕҔ үҮ ҥҤ
-        var dataname = "words" + this.$route.params.lessonId;
+        let dataname = "words" + this.$route.params.lessonId;
         data = require('../../data/' + dataname + '.json');
         return data["task1"];
       },
@@ -80,14 +80,12 @@
       },
       // Page Events
       on: {
-        pageMounted: function (e, page) {
-  
-        },
-        pageInit: function (e, page) {},
-        pageBeforeIn: function (e, page) {
+        pageMounted: function (e, page) {},
+        pageInit: function (e, page) {
           let _data = data;
           this.$root.courseMounted(_data, this);
         },
+        pageBeforeIn: function (e, page) {},
         pageAfterIn: function (e, page) {},
         pageBeforeOut: function (e, page) {},
         pageAfterOut: function (e, page) {},

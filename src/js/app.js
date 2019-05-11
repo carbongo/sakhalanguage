@@ -15,6 +15,9 @@ import cordovaApp from './cordova-app.js';
 
 // Import Routes
 import routes from './routes.js';
+import {
+  resolve
+} from 'url';
 
 var app = new Framework7({
   root: '#app', // App root element
@@ -28,33 +31,45 @@ var app = new Framework7({
         firstName: 'George',
         lastName: 'An.',
       },
-
     };
   },
-  // App root methods
+  // Корневые методы app
   methods: {
-    helloWorld: function () {
-      app.dialog.alert('Hello World!');
-    },
-    storageSet: function (target, value) {
-      console.log("storageSet: Storage (" + target + ") is set to " + value)
+
+    // Установить значение value к target в localStorage посредством localForage
+    setStorage: function (target, value) {
+      console.log("setStorage: Значение " + target + " изменено на " + value);
       localForage.setItem(target, value);
     },
 
-    progressbarSet: function (value) {
-      console.log("progressbarSet: Progressbar " + value + " is set")
+    // Установить значение value к course_progress
+    setProgressbar: function (value) {
+      console.log("setProgressbar: Прогресс " + value + "% установлен");
       app.progressbar.set(course_progress, value, 150);
     },
 
-    taskSet: function (currPage, data, value) {
-      console.log("taskSet: Task " + value + " is set");
+    // Отобразить задание под номером value
+    setTask: function (currPage, data, value) {
+      console.log("setTask: Задание под номером " + value + " отображено");
       currPage.$setState(data["task" + value]);
     },
 
-    viewSet: function (view) {
-      console.log("viewSet: View " + view + " is set");
-      app.views.main.router.navigate('/' + view + '/', {
-        reloadCurrent: true
+    // Открыть страницу с именем view
+    setView: function (view) {
+      console.log("setView: Страница " + view + " открыта");
+      app.views.main.router.navigate('/' + view, {
+        reloadAll: true,
+      });
+    },
+
+    // Вернуть значение value от target из localStorage посредством localForage
+    getStorage: function (target) {
+      // TODO: Must return a value from localForage
+      return localForage.getItem(target).then(function (value) {
+        // Returns a value as a string in a console log
+        console.log("getStorage: Значение из " + target + " = " + value);
+        // TODO: Fix. Not returning a value
+        return value;
       });
     },
 
@@ -62,14 +77,22 @@ var app = new Framework7({
       let courseName = currPage.$f7route.path.slice(9);
       localForage.getItem(courseName, function (err, value) {
         let taskCount = Object.keys(data).length;
-        if (value) {
-          app.methods.taskSet(currPage, data, value);
-          app.methods.progressbarSet(((value - 1) / taskCount) * 100);
-        } else {
-          app.methods.storageSet(courseName, 1);
-          app.methods.progressbarSet(0);
-        }
-      })
+        if (value === null) {
+          console.log("courseMounted: Задание с номером не найдено, отображается задание 1");
+          app.methods.setStorage(courseName, 1);
+          app.methods.setStorage(courseName + '_wrong', 0);
+          app.methods.setProgressbar(0);
+        } else if (value <= taskCount) {
+          console.log("courseMounted: Найдено задание с номером, отображается задание " + value);
+          app.methods.setTask(currPage, data, value);
+          app.methods.setProgressbar(((value - 1) / taskCount) * 100);
+        } else if (value > taskCount) {
+          console.log("courseMounted: Все выполнено!");
+          setTimeout(function () {
+            app.methods.setView("finished/" + courseName);
+          }, 500);
+        };
+      });
     },
 
     answerIsRight: function (data, currPage) {
@@ -87,17 +110,18 @@ var app = new Framework7({
         let taskCount = Object.keys(data).length;
         _value = value + 1;
         if (value < taskCount) {
-          app.methods.progressbarSet(value / taskCount * 100);
-          app.methods.storageSet(courseName, _value);
-          app.methods.taskSet(currPage, data, _value);
+          app.methods.setProgressbar(value / taskCount * 100);
+          app.methods.setStorage(courseName, _value);
+          app.methods.setTask(currPage, data, _value);
         } else {
           console.log("All is done");
-          app.methods.viewSet("finished");
-        }
-      })
+          app.methods.setStorage(courseName, _value);
+          app.methods.setView("finished/" + courseName);
+        };
+      });
     },
 
-    answerIsWrong: function () {
+    answerIsWrong: function (data, currPage) {
       var toast = app.toast.create({
         icon: app.theme === 'ios' ? '<i class="f7-icons">close_round</i>' : '<i class="material-icons">close_round</i>',
         text: 'Неверный ответ',
@@ -105,6 +129,17 @@ var app = new Framework7({
         closeTimeout: 1000,
       });
       toast.open();
+
+      let courseName = currPage.$f7route.path.slice(9);
+      let _value;
+      localForage.getItem(courseName + '_wrong', function (err, value) {
+        _value = value + 1;
+        if (value) {
+          app.methods.setStorage(courseName + '_wrong', _value);
+        } else {
+          app.methods.setStorage(courseName + '_wrong', 1);
+        };
+      });
     },
 
     answerConfirm: function (checkedAnswer, data, currPage) {
@@ -113,9 +148,9 @@ var app = new Framework7({
         app.methods.answerIsRight(data, currPage);
         answer = 1;
       } else {
-        app.methods.answerIsWrong();
+        app.methods.answerIsWrong(data, currPage);
         answer = 0;
-      }
+      };
     },
 
   },
