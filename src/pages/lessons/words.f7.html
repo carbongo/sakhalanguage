@@ -27,7 +27,7 @@
           {{#each this[0].answers}}
           <li>
             <label class="item-radio item-content">
-              <input type="radio" name="radio" value="{{this.right}}" />
+              <input type="radio" name="radio" value="{{this.right}}" @click="this.$root.pronounceText('{{this.pronounce}}');" />
               <i class="icon icon-radio"></i>
               <div class="item-media"><img style="content:var(--img-{{this.img}});" width="44" /></div>
               <div class="item-inner">

@@ -1,6 +1,7 @@
 import $$ from 'dom7';
 import Framework7 from 'framework7/framework7.esm.bundle.js';
 import localForage from 'localforage/dist/localforage.js';
+import Artyom from 'artyom.js/build/artyom.js';
 
 // Import F7 Styles
 import 'framework7/css/framework7.bundle.css';
@@ -19,6 +20,8 @@ import {
   resolve
 } from 'url';
 
+const artyom = new Artyom();
+
 var app = new Framework7({
   root: '#app', // App root element
   id: 'io.georgean.sakhalanguage', // App bundle ID
@@ -35,7 +38,6 @@ var app = new Framework7({
   },
   // Корневые методы app
   methods: {
-
     // Установить значение value к target в localStorage посредством localForage
     setStorage: function (target, value) {
       console.log("setStorage: Значение " + target + " изменено на " + value);
@@ -75,6 +77,13 @@ var app = new Framework7({
       }, timeout);
     },
 
+    pronounceText: function (string) {
+      string = string.replace(/>/g,"'");
+      console.log('Произносится ' + string);
+      artyom.say(string);
+    },
+
+    // Действия при открытии страницы с курсом
     courseMounted: function (data, currPage) {
       app.methods.showPreloader();
       let courseName = currPage.$f7route.path.slice(9);
@@ -98,6 +107,7 @@ var app = new Framework7({
       });
     },
 
+    // Действия, если ответ правильный
     answerIsRight: function (data, currPage) {
       var toast = app.toast.create({
         icon: app.theme === 'ios' ? '<i class="f7-icons">star</i>' : '<i class="material-icons">star</i>',
@@ -125,6 +135,7 @@ var app = new Framework7({
       });
     },
 
+    // Действия, если ответ неверный
     answerIsWrong: function (data, currPage) {
       var toast = app.toast.create({
         icon: app.theme === 'ios' ? '<i class="f7-icons">close_round</i>' : '<i class="material-icons">close_round</i>',
@@ -146,6 +157,7 @@ var app = new Framework7({
       });
     },
 
+    // Определение правильности ответа
     answerConfirm: function (checkedAnswer, data, currPage) {
       let answer = 0;
       if (checkedAnswer === '1') {
