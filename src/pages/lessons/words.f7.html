@@ -52,14 +52,6 @@
   let data;
 
   export default {
-    // Lifecycle Hooks
-    beforeCreate() {},
-    created() {},
-    beforeMount() {},
-    mounted() {},
-    beforeDestroy() {},
-    destroyed() {},
-    // Component Data
     data: function () {
       // Must return an object (these were imported as JSON earlier)
       // It's better to use: https://jsoneditoronline.org
@@ -68,7 +60,6 @@
       data = require('../../data/' + dataname + '.json');
       return data["task1"];
     },
-    // Component Methods
     methods: {
       answerConfirm: function () {
         let checkedAnswer = document.querySelector('input[name="radio"]:checked').value;
@@ -76,9 +67,7 @@
         this.$root.answerConfirm(checkedAnswer, _data, this);
       }
     },
-    // Page Events
     on: {
-      pageMounted: function (e, page) {},
       pageInit: function (e, page) {
         let _data = data;
         this.$root.courseMounted(_data, this);
@@ -87,10 +76,6 @@
           ul.appendChild(ul.children[Math.random() * i | 0]);
         }
       },
-      pageBeforeIn: function (e, page) {},
-      pageAfterIn: function (e, page) {},
-      pageBeforeOut: function (e, page) {},
-      pageBeforeRemove: function (e, page) {},
     }
   };
 </script>
