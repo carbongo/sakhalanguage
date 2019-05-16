@@ -33,7 +33,7 @@ import {
 const artyom = new Artyom();
 
 artyom.initialize({
-  lang:"ru-RU",
+  lang:"en-GB",
 });
 
 var app = new Framework7({

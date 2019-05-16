@@ -4,25 +4,25 @@
         "type": "phrase",
         "answers": [{
                 "word": "Ону Уруслаан эппитэ",
-                "pronounce": "Ону - Уруслаан эппьитэ",
+                "pronounce": "On>y - Urus-lan ep>piteh",
                 "translation": "Это сказал Руслан",
                 "right": 0
             },
             {
                 "word": "Мин аатым Уруслаан",
-                "pronounce": "Мин аатым - Уруслаан",
+                "pronounce": "Miyn aatou>m - Urus-lan",
                 "translation": "Меня зовут Руслан",
                 "right": 1
             },
             {
                 "word": "Эн аатын Уруслаан",
-                "pronounce": "Эн аатын - Уруслаан",
+                "pronounce": "En aato>n - Urus-lan",
                 "translation": "Тебя зовут Руслан",
                 "right": 0
             },
             {
                 "word": "Кини аата Уруслаан",
-                "pronounce": "Кини аата - уруслаан",
+                "pronounce": "Kini aata - Urus-lan",
                 "translation": "Его зовут Руслан",
                 "right": 0
             }
