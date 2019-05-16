@@ -23,11 +23,10 @@ import {
 const artyom = new Artyom();
 
 var app = new Framework7({
-  root: '#app', // App root element
-  id: 'io.georgean.sakhalanguage', // App bundle ID
-  name: 'Саха тыла', // App name
-  theme: 'auto', // Automatic theme detection
-  // App root data
+  root: '#app',
+  id: 'io.georgean.sakhalanguage',
+  name: 'Саха тыла',
+  theme: 'auto',
   data: function () {
     return {
       user: {
@@ -77,6 +76,7 @@ var app = new Framework7({
       }, timeout);
     },
 
+    // Произнести строку
     pronounceText: function (string) {
       string = string.replace(/>/g,"'");
       console.log('Произносится ' + string);

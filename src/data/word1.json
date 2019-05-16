@@ -1,0 +1,176 @@
+{
+  "task1": [{
+    "task": "Дерево",
+    "type": "word",
+    "answers": [{
+        "word": "Аан",
+        "pronounce": "a>aan",
+        "img": "door",
+        "right": 0
+      },
+      {
+        "word": "Мас",
+        "pronounce": "mass",
+        "img": "tree",
+        "right": 1
+      },
+      {
+        "word": "Киһи",
+        "pronounce": "keehee",
+        "img": "man",
+        "right": 0
+      },
+      {
+        "word": "Таҥас",
+        "pronounce": "ta>ng>aas",
+        "img": "shirt",
+        "right": 0
+      }
+    ]
+  }],
+  "task2": [{
+    "task": "Человек",
+    "type": "word",
+    "answers": [{
+        "word": "Мас",
+        "pronounce": "mass",
+        "img": "tree",
+        "right": 0
+      },
+      {
+        "word": "Аан",
+        "pronounce": "a>aan",
+        "img": "door",
+        "right": 0
+      },
+      {
+        "word": "Таҥас",
+        "pronounce": "ta>ng>aas",
+        "img": "shirt",
+        "right": 0
+      },
+      {
+        "word": "Киһи",
+        "pronounce": "keehee",
+        "img": "man",
+        "right": 1
+      }
+    ]
+  }],
+  "task3": [{
+    "task": "Девочка",
+    "type": "word",
+    "answers": [{
+        "word": "Кыыс",
+        "pronounce": "koo>s",
+        "img": "woman",
+        "right": 1
+      },
+      {
+        "word": "Уол",
+        "pronounce": "wall",
+        "img": "man",
+        "right": 0
+      },
+      {
+        "word": "Мас",
+        "pronounce": "mass",
+        "img": "tree",
+        "right": 0
+      },
+      {
+        "word": "Таҥас",
+        "pronounce": "ta>ng>aas",
+        "img": "shirt",
+        "right": 0
+      }
+    ]
+  }],
+  "task4": [{
+    "task": "Одежда",
+    "type": "word",
+    "answers": [{
+        "word": "Аан",
+        "pronounce": "a>aan",
+        "img": "door",
+        "right": 0
+      },
+      {
+        "word": "Мас",
+        "pronounce": "mass",
+        "img": "tree",
+        "right": 0
+      },
+      {
+        "word": "Киһи",
+        "pronounce": "keehee",
+        "img": "man",
+        "right": 0
+      },
+      {
+        "word": "Таҥас",
+        "pronounce": "ta>ng>aas",
+        "img": "shirt",
+        "right": 1
+      }
+    ]
+  }],
+  "task5": [{
+    "task": "Мальчик",
+    "type": "word",
+    "answers": [{
+        "word": "Кыыс",
+        "pronounce": "koo>s",
+        "img": "woman",
+        "right": 0
+      },
+      {
+        "word": "Уол",
+        "pronounce": "wall",
+        "img": "man",
+        "right": 1
+      },
+      {
+        "word": "Мас",
+        "pronounce": "mass",
+        "img": "tree",
+        "right": 0
+      },
+      {
+        "word": "Таҥас",
+        "pronounce": "ta>ng>aas",
+        "img": "shirt",
+        "right": 0
+      }
+    ]
+  }],
+  "task6": [{
+    "task": "Дверь",
+    "type": "word",
+    "answers": [{
+        "word": "Уол",
+        "pronounce": "wall",
+        "img": "man",
+        "right": 0
+      },
+      {
+        "word": "Кыыс",
+        "pronounce": "koo>s",
+        "img": "woman",
+        "right": 0
+      },
+      {
+        "word": "Аан",
+        "pronounce": "a>aan",
+        "img": "door",
+        "right": 1
+      },
+      {
+        "word": "Таҥас",
+        "pronounce": "ta>ng>aas",
+        "img": "shirt",
+        "right": 0
+      }
+    ]
+  }]
+}
