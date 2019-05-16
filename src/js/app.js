@@ -32,9 +32,12 @@ import {
 
 const artyom = new Artyom();
 
-artyom.initialize({
-  lang:"en-GB",
-});
+const audio = {
+  rightanswer,
+  wronganswer,
+  failure,
+  success,
+}
 
 var app = new Framework7({
   root: '#app',
@@ -86,34 +89,10 @@ var app = new Framework7({
     },
 
     playSound: function (target) {
-      let sound = null;
-      switch (target) {
-        case 'rightanswer':
-          sound = new Howl({
-            src: rightanswer
-          });
-          break;
-        case 'wronganswer':
-          sound = new Howl({
-            src: wronganswer
-          });
-          break;
-        case 'failure':
-          sound = new Howl({
-            src: failure
-          });
-          break;
-        case 'success':
-          sound = new Howl({
-            src: success
-          });
-          break;
-        default:
-          sound = new Howl({
-            src: target
-          });
-          break;
-      }
+      let sound = new Howl({
+        html5: false,
+        src: audio[target],
+      });
       sound.play();
     },
 
