@@ -11,7 +11,8 @@
     <div class="page-content">
       <div class="block-title block-title-medium">Добро пожаловать</div>
       <div class="block block-strong">
-        <p>Благодаря этому приложению, Вы узнаете основы якутского языка. На данный момент существует три вида заданий.</p>
+        <p>Благодаря этому приложению, Вы узнаете основы якутского языка. На данный момент существует три вида заданий.
+        </p>
       </div>
       <div class="block-title">Модуль 1</div>
       <div class="list">
@@ -20,11 +21,13 @@
             <a href="/lessons/word/1" class="item-content item-link">
               <div class="item-inner">
                 <div class="item-title">Слова</div>
+                <div class="progressbar color-blue" id="word/1" data-progress="0" style="width: 20%;"></div>
               </div>
             </a>
             <a href="/lessons/check/1" class="item-content item-link">
               <div class="item-inner">
                 <div class="item-title">Закрепление</div>
+                <div class="progressbar color-blue" id="check/1" data-progress="0" style="width: 20%;"></div>
               </div>
             </a>
           </li>
@@ -38,16 +41,19 @@
             <a href="/lessons/word/2" class="item-content item-link">
               <div class="item-inner">
                 <div class="item-title">Слова</div>
+                <div class="progressbar color-blue" id="word/2" data-progress="0" style="width: 20%;"></div>
               </div>
             </a>
             <a href="/lessons/phrase/2" class="item-content item-link">
               <div class="item-inner">
                 <div class="item-title">Фразы</div>
+                <div class="progressbar color-blue" id="phrase/2" data-progress="0" style="width: 20%;"></div>
               </div>
             </a>
             <a href="/lessons/check/2" class="item-content item-link">
               <div class="item-inner">
                 <div class="item-title">Закрепление</div>
+                <div class="progressbar color-blue" id="check/2" data-progress="0" style="width: 20%;"></div>
               </div>
             </a>
           </li>
@@ -61,21 +67,25 @@
             <a href="/lessons/word/3" class="item-content item-link">
               <div class="item-inner">
                 <div class="item-title">Слова</div>
+                <div class="progressbar color-blue" id="word/3" data-progress="0" style="width: 20%;"></div>
               </div>
             </a>
             <a href="/lessons/phrase/3" class="item-content item-link">
               <div class="item-inner">
                 <div class="item-title">Фразы</div>
+                <div class="progressbar color-blue" id="phrase/3" data-progress="0" style="width: 20%;"></div>
               </div>
             </a>
             <a href="/lessons/audio/3" class="item-content item-link">
               <div class="item-inner">
                 <div class="item-title">Аудирование</div>
+                <div class="progressbar color-blue" id="audio/3" data-progress="0" style="width: 20%;"></div>
               </div>
             </a>
             <a href="/lessons/check/3" class="item-content item-link">
               <div class="item-inner">
                 <div class="item-title">Закрепление</div>
+                <div class="progressbar color-blue" id="check/3" data-progress="0" style="width: 20%;"></div>
               </div>
             </a>
           </li>
@@ -98,5 +108,17 @@
   </div>
 </template>
 <script>
-  export default {}
+  export default {
+    on: {
+      pageInit: async function (e, page) {
+        let progressbar = document.getElementsByClassName("progressbar");
+        for (var i = 0; i < progressbar.length; i++) {
+          let completedTasks = await this.$root.getStorage(progressbar.item(i).id) - 1;
+          let overallTasks = await this.$root.getStorage(progressbar.item(i).id + '_overall');
+          let percentage = completedTasks / overallTasks * 100;
+          this.$root.setProgressbar(percentage, progressbar.item(i));
+        }
+      },
+    }
+  }
 </script>

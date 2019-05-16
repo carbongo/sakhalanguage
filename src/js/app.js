@@ -2,6 +2,10 @@ import $$ from 'dom7';
 import Framework7 from 'framework7/framework7.esm.bundle.js';
 import localForage from 'localforage/dist/localforage.js';
 import Artyom from 'artyom.js/build/artyom.js';
+import {
+  Howl,
+  Howler
+} from 'howler/dist/howler.js';
 
 // Import F7 Styles
 import 'framework7/css/framework7.bundle.css';
@@ -10,6 +14,12 @@ import 'framework7/css/framework7.bundle.css';
 import '../css/icons.css';
 import '../css/app.css';
 import '../css/images.css';
+
+// Import Media
+import rightanswer from '../assets/media/rightanswer.mp3';
+import wronganswer from '../assets/media/wronganswer.mp3';
+import failure from '../assets/media/failure.mp3';
+import success from '../assets/media/success.mp3';
 
 // Import Cordova APIs
 import cordovaApp from './cordova-app.js';
@@ -22,19 +32,15 @@ import {
 
 const artyom = new Artyom();
 
+artyom.initialize({
+  lang:"ru-RU",
+});
+
 var app = new Framework7({
   root: '#app',
   id: 'io.georgean.sakhalanguage',
   name: 'Саха тыла',
   theme: 'auto',
-  data: function () {
-    return {
-      user: {
-        firstName: 'George',
-        lastName: 'An.',
-      },
-    };
-  },
   // Корневые методы app
   methods: {
     // Установить значение value к target в localStorage посредством localForage
@@ -43,10 +49,10 @@ var app = new Framework7({
       localForage.setItem(target, value);
     },
 
-    // Установить значение value к course_progress
-    setProgressbar: function (value) {
+    // Установить значение value к target (course_progress по умолчанию)
+    setProgressbar: function (value, target = course_progress) {
       console.log("setProgressbar: Прогресс " + value + "% установлен");
-      app.progressbar.set(course_progress, value, 150);
+      app.progressbar.set(target, value, 150);
     },
 
     // Отобразить задание под номером value
@@ -64,21 +70,56 @@ var app = new Framework7({
     },
 
     // Вернуть значение value от target из localStorage посредством localForage
+    // Внимание: метод асинхронный!
     getStorage: async function (target) {
-      return await localForage.getItem(target);
+      let value = await localForage.getItem(target);
+      console.log("getStorage: Значение " + target + " это " + value);
+      return value;
     },
 
-    // Показать значок загрузки
+    // Показать диалог загрузки
     showPreloader: function (timeout = 500) {
-      app.preloader.show();
+      app.dialog.preloader('Загрузка...');
       setTimeout(function () {
-        app.preloader.hide()
+        app.dialog.close();
       }, timeout);
+    },
+
+    playSound: function (target) {
+      let sound = null;
+      switch (target) {
+        case 'rightanswer':
+          sound = new Howl({
+            src: rightanswer
+          });
+          break;
+        case 'wronganswer':
+          sound = new Howl({
+            src: wronganswer
+          });
+          break;
+        case 'failure':
+          sound = new Howl({
+            src: failure
+          });
+          break;
+        case 'success':
+          sound = new Howl({
+            src: success
+          });
+          break;
+        default:
+          sound = new Howl({
+            src: target
+          });
+          break;
+      }
+      sound.play();
     },
 
     // Произнести строку
     pronounceText: function (string) {
-      string = string.replace(/>/g,"'");
+      string = string.replace(/>/g, "'");
       console.log('Произносится ' + string);
       artyom.say(string);
     },
@@ -92,6 +133,7 @@ var app = new Framework7({
         if (value === null) {
           console.log("courseMounted: Задание с номером не найдено, отображается задание 1");
           app.methods.setStorage(courseName, 1);
+          app.methods.setStorage(courseName + '_overall', taskCount);
           app.methods.setStorage(courseName + '_wrong', 0);
           app.methods.setProgressbar(0);
         } else if (value <= taskCount) {
@@ -126,6 +168,7 @@ var app = new Framework7({
         if (value < taskCount) {
           app.methods.setProgressbar(value / taskCount * 100);
           app.methods.setTask(currPage, data, _value);
+          app.methods.playSound('rightanswer');
         } else {
           console.log("All is done");
           setTimeout(function () {
@@ -155,6 +198,8 @@ var app = new Framework7({
           app.methods.setStorage(courseName + '_wrong', 1);
         };
       });
+
+      app.methods.playSound('wronganswer');
     },
 
     // Определение правильности ответа

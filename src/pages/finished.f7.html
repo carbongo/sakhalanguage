@@ -13,13 +13,13 @@
     </div>
     <div class="page-content">
       <div class="block block-strong text-align-center">
-        <h2>
-          Поздравляем! Вы завершили занятие.
-        </h2>
+        <h2 id="congrats"></h2>
         <div class="gauge result"></div>
-        <a @click="restartCourse" class="col button button-round">
-          Пройти заново
-        </a>
+        <p>
+          <a @click="restartCourse" class="col button button-round">
+            Пройти заново
+          </a>
+        </p>
       </div>
       <div class="block block-strong">
         <a href="/" class="col button button-large button-round button-fill button-raised">
@@ -31,16 +31,13 @@
 </template>
 <script>
   export default {
-    // Lifecycle Hooks
-    beforeCreate() {},
-    created() {},
-    beforeMount() {},
-    mounted() {},
-    beforeDestroy() {},
-    destroyed() {},
-    // Component Data
-    data: function () {},
-    // Component Methods
+    data: function () {
+      let data = {
+        victory: ["Отличный результат!", "Поздравляем! Вы успешно прошли задание"],
+        loss: ["Вы можете лучше!", "Ещё разок?"],
+      };
+      return data;
+    },
     methods: {
       restartCourse: function () {
         let context = this;
@@ -55,11 +52,7 @@
         }, 250);
       },
     },
-    // Page Events
     on: {
-      pageMounted: function (e, page) {},
-      pageInit: function (e, page) {},
-      pageBeforeIn: function (e, page) {},
       pageAfterIn: async function (e, page) {
         let taskCount = await this.$root.getStorage(this.$route.params.lessonType + "/" + this.$route.params
           .lessonId) - 1;
@@ -79,10 +72,18 @@
           valueTextColor: '#2196f3',
           labelText: 'точность выполнения',
         });
+        if (accuracy > 0.50) {
+          this.$root.playSound('success');
+          congrats.innerHTML = this.victory[Math.floor(Math.random() * Math.floor(this.victory.length))];
+        } else {
+          this.$root.playSound('failure');
+          demoGauge.update({
+            borderColor: '#ef2e52',
+            valueTextColor: '#ef2e52',
+          });
+          congrats.innerHTML = this.loss[Math.floor(Math.random() * Math.floor(this.loss.length))];
+        }
       },
-      pageBeforeOut: function (e, page) {},
-      pageAfterOut: function (e, page) {},
-      pageBeforeRemove: function (e, page) {},
     }
   };
 </script>

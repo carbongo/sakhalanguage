@@ -1,0 +1,148 @@
+{
+    "task1": [{
+        "task": "Питье (напиток)",
+        "type": "word",
+        "answers": [{
+                "word": "Утах",
+                "pronounce": "utakh",
+                "img": "drink",
+                "right": 1
+            },
+            {
+                "word": "Ас",
+                "pronounce": "us",
+                "img": "food",
+                "right": 0
+            },
+            {
+                "word": "Дьиэ",
+                "pronounce": "djyea>h",
+                "img": "house",
+                "right": 0
+            },
+            {
+                "word": "Түннүк",
+                "pronounce": "tyn>nyk",
+                "img": "window",
+                "right": 0
+            }
+        ]
+    }],
+    "task2": [{
+        "task": "Пища (еда)",
+        "type": "word",
+        "answers": [{
+                "word": "Түннүк",
+                "pronounce": "tyn>nyk",
+                "img": "window",
+                "right": 0
+            },
+            {
+                "word": "Дьиэ",
+                "pronounce": "djyea>h",
+                "img": "house",
+                "right": 0
+            },
+            {
+                "word": "Ас",
+                "pronounce": "us",
+                "img": "food",
+                "right": 1
+            },
+            {
+                "word": "Утах",
+                "pronounce": "utakh",
+                "img": "drink",
+                "right": 0
+            }
+        ]
+    }],
+    "task3": [{
+        "task": "Дом (здание)",
+        "type": "word",
+        "answers": [{
+                "word": "Түннүк",
+                "pronounce": "tyn>nyk",
+                "img": "window",
+                "right": 0
+            },
+            {
+                "word": "Дьиэ",
+                "pronounce": "djyea>h",
+                "img": "house",
+                "right": 1
+            },
+            {
+                "word": "Утах",
+                "pronounce": "utakh",
+                "img": "drink",
+                "right": 0
+            },
+            {
+                "word": "Ас",
+                "pronounce": "us",
+                "img": "food",
+                "right": 0
+            }
+        ]
+    }],
+    "task4": [{
+        "task": "Окно",
+        "type": "word",
+        "answers": [{
+                "word": "Түннүк",
+                "pronounce": "tyn>nyk",
+                "img": "window",
+                "right": 1
+            },
+            {
+                "word": "Утах",
+                "pronounce": "utakh",
+                "img": "drink",
+                "right": 0
+            },
+            {
+                "word": "Ас",
+                "pronounce": "us",
+                "img": "food",
+                "right": 0
+            },
+            {
+                "word": "Дьиэ",
+                "pronounce": "djyea>h",
+                "img": "house",
+                "right": 0
+            }
+        ]
+    }],
+    "task5": [{
+        "task": "Дорога",
+        "type": "word",
+        "answers": [
+            {
+                "word": "Утах",
+                "pronounce": "utakh",
+                "img": "drink",
+                "right": 0
+            },
+            {
+                "word": "Түннүк",
+                "pronounce": "tyn>nyk",
+                "img": "window",
+                "right": 0
+            },
+            {
+                "word": "Суол",
+                "pronounce": "saul",
+                "img": "road",
+                "right": 1
+            },
+            {
+                "word": "Ас",
+                "pronounce": "us",
+                "img": "food",
+                "right": 0
+            }
+        ]
+    }]
+}

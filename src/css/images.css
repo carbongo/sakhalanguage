@@ -1,7 +1,14 @@
 :root {
+    /* Word 1 */
     --img-door: url(../assets/images/door.png);
     --img-tree: url(../assets/images/tree.png);
     --img-shirt: url(../assets/images/shirt.png);
     --img-man: url(../assets/images/man.png);
     --img-woman: url(../assets/images/woman.png);
+    /* Word 2 */
+    --img-drink: url(../assets/images/drink.png);
+    --img-food: url(../assets/images/food.png);
+    --img-house: url(../assets/images/house.png);
+    --img-road: url(../assets/images/road.png);
+    --img-window: url(../assets/images/window.png);
 }

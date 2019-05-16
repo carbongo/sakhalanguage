@@ -1,0 +1,60 @@
+{
+    "task1": [{
+        "task": "Меня зовут Руслан",
+        "type": "phrase",
+        "answers": [{
+                "word": "Ону Уруслаан эппитэ",
+                "pronounce": "Ону - Уруслаан эппьитэ",
+                "translation": "Это сказал Руслан",
+                "right": 0
+            },
+            {
+                "word": "Мин аатым Уруслаан",
+                "pronounce": "Мин аатым - Уруслаан",
+                "translation": "Меня зовут Руслан",
+                "right": 1
+            },
+            {
+                "word": "Эн аатын Уруслаан",
+                "pronounce": "Эн аатын - Уруслаан",
+                "translation": "Тебя зовут Руслан",
+                "right": 0
+            },
+            {
+                "word": "Кини аата Уруслаан",
+                "pronounce": "Кини аата - уруслаан",
+                "translation": "Его зовут Руслан",
+                "right": 0
+            }
+        ]
+    }],
+    "task2": [{
+        "task": "Он стоит на дороге",
+        "type": "phrase",
+        "answers": [{
+                "word": "Кини суолга турар",
+                "pronounce": "Kini - saulga tooraahr",
+                "translation": "Руслан стоит на дороге",
+                "right": 1
+            },
+            {
+                "word": "Кини суолунан барар",
+                "pronounce": "Kini saul>unan barrahr",
+                "translation": "Руслан (всегда) идёт по дороге",
+                "right": 0
+            },
+            {
+                "word": "Кини дьиэтигэр",
+                "pronounce": "Kini - djyeahteagear",
+                "translation": "Руслан у себя дома",
+                "right": 0
+            },
+            {
+                "word": "Кини дьиэ утары турар",
+                "pronounce": "Kini djyeah outaroo> tooraahr",
+                "translation": "Руслан напротив здания (дома)",
+                "right": 0
+            }
+        ]
+    }]
+}
