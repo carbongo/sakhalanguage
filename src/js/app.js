@@ -1,7 +1,6 @@
 import $$ from 'dom7';
 import Framework7 from 'framework7/framework7.esm.bundle.js';
 import localForage from 'localforage/dist/localforage.js';
-import Artyom from 'artyom.js/build/artyom.js';
 import {
   Howl,
   Howler
@@ -26,8 +25,6 @@ import routes from './routes.js';
 import {
   resolve
 } from 'url';
-
-const artyom = new Artyom();
 
 var app = new Framework7({
   root: '#app',
@@ -78,7 +75,9 @@ var app = new Framework7({
       }, timeout);
     },
 
+    // Проиграть звук
     playSound: function (target) {
+      console.log('Проигрывается ' + target);
       let sound = new Howl({
         html5: false,
         src: audio[target],
@@ -87,10 +86,13 @@ var app = new Framework7({
     },
 
     // Произнести строку
-    pronounceText: function (string) {
-      string = string.replace(/>/g, "'");
-      console.log('Произносится ' + string);
-      artyom.say(string);
+    pronounceText: function (target) {
+      console.log('Произносится ' + target);
+      let sound = new Howl({
+        html5: false,
+        src: audio.pronounce[target],
+      });
+      sound.play();
     },
 
     // Действия при открытии страницы с курсом

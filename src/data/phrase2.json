@@ -4,25 +4,25 @@
         "type": "phrase",
         "answers": [{
                 "word": "Ону Уруслаан эппитэ",
-                "pronounce": "On>y - Urus-lan ep>piteh",
+                "data": "ruslansaid",
                 "translation": "Это сказал Руслан",
                 "right": 0
             },
             {
                 "word": "Мин аатым Уруслаан",
-                "pronounce": "Miyn aatou>m - Urus-lan",
+                "data": "mynameisruslan",
                 "translation": "Меня зовут Руслан",
                 "right": 1
             },
             {
                 "word": "Эн аатын Уруслаан",
-                "pronounce": "En aato>n - Urus-lan",
+                "data": "yournameisruslan",
                 "translation": "Тебя зовут Руслан",
                 "right": 0
             },
             {
                 "word": "Кини аата Уруслаан",
-                "pronounce": "Kini aata - Urus-lan",
+                "data": "hisnameisruslan",
                 "translation": "Его зовут Руслан",
                 "right": 0
             }
@@ -33,26 +33,26 @@
         "type": "phrase",
         "answers": [{
                 "word": "Кини суолга турар",
-                "pronounce": "Kini - saulga tooraahr",
-                "translation": "Руслан стоит на дороге",
+                "data": "heisstandingonaroad",
+                "translation": "Он стоит на дороге",
                 "right": 1
             },
             {
                 "word": "Кини суолунан барар",
-                "pronounce": "Kini saul>unan barrahr",
-                "translation": "Руслан (всегда) идёт по дороге",
+                "data": "heisgoingbyaroad",
+                "translation": "Он идёт по дороге",
                 "right": 0
             },
             {
                 "word": "Кини дьиэтигэр",
-                "pronounce": "Kini - djyeahteagear",
-                "translation": "Руслан у себя дома",
+                "data": "heisathome",
+                "translation": "Он у себя дома",
                 "right": 0
             },
             {
                 "word": "Кини дьиэ утары турар",
-                "pronounce": "Kini djyeah outaroo> tooraahr",
-                "translation": "Руслан напротив здания (дома)",
+                "data": "heisstandinginfrontofabuilding",
+                "translation": "Он напротив здания (дома)",
                 "right": 0
             }
         ]

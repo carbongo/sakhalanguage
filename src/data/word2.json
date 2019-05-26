@@ -4,26 +4,22 @@
         "type": "word",
         "answers": [{
                 "word": "Утах",
-                "pronounce": "utakh",
-                "img": "drink",
+                "data": "drink",
                 "right": 1
             },
             {
                 "word": "Ас",
-                "pronounce": "us",
-                "img": "food",
+                "data": "food",
                 "right": 0
             },
             {
                 "word": "Дьиэ",
-                "pronounce": "djyea>h",
-                "img": "house",
+                "data": "house",
                 "right": 0
             },
             {
                 "word": "Түннүк",
-                "pronounce": "tyn>nyk",
-                "img": "window",
+                "data": "window",
                 "right": 0
             }
         ]
@@ -33,26 +29,22 @@
         "type": "word",
         "answers": [{
                 "word": "Түннүк",
-                "pronounce": "tyn>nyk",
-                "img": "window",
+                "data": "window",
                 "right": 0
             },
             {
                 "word": "Дьиэ",
-                "pronounce": "djyea>h",
-                "img": "house",
+                "data": "house",
                 "right": 0
             },
             {
                 "word": "Ас",
-                "pronounce": "us",
-                "img": "food",
+                "data": "food",
                 "right": 1
             },
             {
                 "word": "Утах",
-                "pronounce": "utakh",
-                "img": "drink",
+                "data": "drink",
                 "right": 0
             }
         ]
@@ -62,26 +54,22 @@
         "type": "word",
         "answers": [{
                 "word": "Түннүк",
-                "pronounce": "tyn>nyk",
-                "img": "window",
+                "data": "window",
                 "right": 0
             },
             {
                 "word": "Дьиэ",
-                "pronounce": "djyea>h",
-                "img": "house",
+                "data": "house",
                 "right": 1
             },
             {
                 "word": "Утах",
-                "pronounce": "utakh",
-                "img": "drink",
+                "data": "drink",
                 "right": 0
             },
             {
                 "word": "Ас",
-                "pronounce": "us",
-                "img": "food",
+                "data": "food",
                 "right": 0
             }
         ]
@@ -91,26 +79,22 @@
         "type": "word",
         "answers": [{
                 "word": "Түннүк",
-                "pronounce": "tyn>nyk",
-                "img": "window",
+                "data": "window",
                 "right": 1
             },
             {
                 "word": "Утах",
-                "pronounce": "utakh",
-                "img": "drink",
+                "data": "drink",
                 "right": 0
             },
             {
                 "word": "Ас",
-                "pronounce": "us",
-                "img": "food",
+                "data": "food",
                 "right": 0
             },
             {
                 "word": "Дьиэ",
-                "pronounce": "djyea>h",
-                "img": "house",
+                "data": "house",
                 "right": 0
             }
         ]
@@ -118,29 +102,24 @@
     "task5": [{
         "task": "Дорога",
         "type": "word",
-        "answers": [
-            {
+        "answers": [{
                 "word": "Утах",
-                "pronounce": "utakh",
-                "img": "drink",
+                "data": "drink",
                 "right": 0
             },
             {
                 "word": "Түннүк",
-                "pronounce": "tyn>nyk",
-                "img": "window",
+                "data": "window",
                 "right": 0
             },
             {
                 "word": "Суол",
-                "pronounce": "saul",
-                "img": "road",
+                "data": "road",
                 "right": 1
             },
             {
                 "word": "Ас",
-                "pronounce": "us",
-                "img": "food",
+                "data": "food",
                 "right": 0
             }
         ]
