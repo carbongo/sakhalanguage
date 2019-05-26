@@ -16,10 +16,7 @@ import '../css/app.css';
 import '../css/images.css';
 
 // Import Media
-import rightanswer from '../assets/media/rightanswer.mp3';
-import wronganswer from '../assets/media/wronganswer.mp3';
-import failure from '../assets/media/failure.mp3';
-import success from '../assets/media/success.mp3';
+import audio from './audio.js';
 
 // Import Cordova APIs
 import cordovaApp from './cordova-app.js';
@@ -31,13 +28,6 @@ import {
 } from 'url';
 
 const artyom = new Artyom();
-
-const audio = {
-  rightanswer,
-  wronganswer,
-  failure,
-  success,
-}
 
 var app = new Framework7({
   root: '#app',
