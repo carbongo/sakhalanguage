@@ -1,5 +1,7 @@
 # Sakha Language
 
+Sakha language learning app for Russian speakers. Bachelor's Thesis.
+
 ## NPM Scripts
 
 * `npm run build-dev` - run development server
